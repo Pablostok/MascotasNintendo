@@ -1,0 +1,10 @@
+def principalmenu():
+    print("Qué necesitas hacer?")
+    print("")
+    print("1. Horario de hoy")
+    print("2. Ver calendario")
+    print("3. Registro citas")
+    print("4. Clientes")
+    print("5. Mascotas")
+    print("")
+    print("9. Salir")
