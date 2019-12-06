@@ -43,6 +43,15 @@ def buscaclien():
     print("#                                                             #")
     print("#                ---Mascotas Nintendo---                      #")
     print("#                                                             #")
+    print("#*************************************************************#")
+    print("#                                                             #")
+    print("#                 ¿Qué necesitas hacer?                       #")
+    print("#                                                             #")
+    print("# 1. Busqueda por nombre                                      #")
+    print("# 2. Busqueda por DNI                                         #")
+    print("# 3. Busqueda por num. telefónico                             #")
+    print("#                                                             #")
+    print("# 9. Atrás                                                    #")
     print("###############################################################")
 
 def menuclien():
