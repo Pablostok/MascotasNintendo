@@ -42,7 +42,31 @@ def main():
             exit(9)
 
 def altaclien():
-    return True
+    print_menus.altaclien()
+    print("")
+    print("   ---Por favor, introduzca poco a poco los datos---   ")
+    print("")
+    nom = input("Introduzca (solamente) su nombre: ")
+    sur = input("Introduzca sus apellidos: ")
+    tel = input("Introduzca su teléfono: ")
+    dni = input("Introduzca su DNI: ")
+
+    clientName.append(nom)
+    clientSurname.append(sur)
+    clientPhone.append(tel)
+    clientID.append(dni)
+
+    ook = False
+    while ook == False:
+        print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")
+        print("")
+        resp = input("Introduzca C o P: ")
+        if resp.upper() == "C":
+            clientes()
+            ook = True
+        elif resp.upper() == "P":
+            main()
+            ook = True
 
 def bajaclien():
     return True
@@ -63,17 +87,20 @@ def clientes():
             #mostrar clientes
             leido = len(clientID)
 
+            print("")
+
             for i in range(0, leido):
                 if i == 0:
                     print("1. "+clientName[i]+" "+clientSurname[i])
-                    print("   "+clientID[i])
-                    print("   "+clientPhone[i])
+                    print("   "+"DNI:      "+clientID[i])
+                    print("   "+"Teléfono: "+clientPhone[i])
+                    print("")
                 else:
-                    o = str(i)
-                    print(o+".  "+clientName[i]+" "+clientSurname[i])
-                    print("   "+clientID[i])
-                    print("   "+clientPhone[i])
-            print("")
+                    o = str(i+1)
+                    print(o+". "+clientName[i]+" "+clientSurname[i])
+                    print("   "+"DNI:      "+clientID[i])
+                    print("   "+"Teléfono: "+clientPhone[i])
+                    print("")
             ook = False
             while ook == False:
                 print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")

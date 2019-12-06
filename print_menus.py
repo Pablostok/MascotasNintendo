@@ -62,7 +62,7 @@ def menuclien():
     print("# 3. Baja clientes                                            #")
     print("# 4. Buscar clientes                                          #")
     print("#                                                             #")
-    print("# 9. Salir                                                    #")
+    print("# 9. Atrás                                                    #")
     print("###############################################################")
 
 def menumasc():
