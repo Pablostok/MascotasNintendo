@@ -1,4 +1,10 @@
+
+def clean():
+    clear = "\n" * 100
+    print(clear)
+
 def principalmenu():
+    clean()
     print("###############################################################")
     print("#                                                             #")
     print("#                     MENÚ PRINCIPAL                          #")
@@ -19,6 +25,7 @@ def principalmenu():
     print("###############################################################")
 
 def altaclien():
+    clean()
     print("###############################################################")
     print("#                                                             #")
     print("#                    ALTA DE CLIENTES                         #")
@@ -28,6 +35,7 @@ def altaclien():
     print("###############################################################")
 
 def bajaclien():
+    clean()
     print("###############################################################")
     print("#                                                             #")
     print("#                    BAJA DE CLIENTES                         #")
@@ -37,6 +45,7 @@ def bajaclien():
     print("###############################################################")
 
 def buscaclien():
+    clean()
     print("###############################################################")
     print("#                                                             #")
     print("#                  BUSCADOR DE CLIENTES                       #")
@@ -55,6 +64,8 @@ def buscaclien():
     print("###############################################################")
 
 def menuclien():
+    clean()
+
     print("###############################################################")
     print("#                                                             #")
     print("#                      MENÚ CLIENTES                          #")
@@ -75,10 +86,34 @@ def menuclien():
     print("###############################################################")
 
 def menumasc():
+    clean()
+
     print("###############################################################")
     print("#                                                             #")
+    print("#                      MENÚ MASCOTAS                          #")
+    print("#                                                             #")
+    print("#                 ---Mascotas Nintendo---                     #")
     print("#                                                             #")
     print("#                                                             #")
-    print("#                ---Mascotas Nintendo---                      #")
+    print("#*************************************************************#")
     print("#                                                             #")
+    print("#                 ¿Qué necesitas hacer?                       #")
+    print("#                                                             #")
+    print("# 1. Mostrar mascotas                                         #")
+    print("# 2. Alta mascotas                                            #")
+    print("# 3. Baja mascotas                                            #")
+    print("# 4. Buscar mascotas                                          #")
+    print("#                                                             #")
+    print("# 9. Atrás                                                    #")
     print("###############################################################")
+
+
+
+
+    # print("###############################################################")
+    # print("#                                                             #")
+    # print("#                                                             #")
+    # print("#                                                             #")
+    # print("#                ---Mascotas Nintendo---                      #")
+    # print("#                                                             #")
+    # print("###############################################################")

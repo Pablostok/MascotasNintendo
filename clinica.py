@@ -9,11 +9,18 @@ def copyright():
     print("#                                                             #")
     print("#                                 Amanda G.P. & Pablo V.R.    #")
     print("###############################################################")
-
+#########################################################################################
 clientName = ["Manuel","Vanesa","David","Pablo","Pablo"]
 clientSurname = ["Carrasco","Martín","Bisbal","Alborán","López"]
 clientID = ["00000000M","00000000V","00000000D","00000000P","00000001P"]
 clientPhone = ["111111111","222222222","333333333","444444444","555555555"]
+#########################################################################################
+clientPet = [1,3,0,1,1]
+petOwner = ["00000000M","00000000V","00000000V","00000000V","00000000P","00000001P"]
+petName = ["Toad","Pikachu","Furret","Yoshi","Luigi","Bulbasur"]
+petKind = ["Perro","Hamster","Hurón","Perro","Pato","Tortuga"]
+petGenre = ["H","M","H","M","M","H"]
+#########################################################################################
 
 def main():
     print_menus.principalmenu()
@@ -36,10 +43,61 @@ def main():
             clientes()
             ok = True
         elif num == "5":
-            #funcion mascotas
+            mascotas()
             ok = True
         elif num == "9":
             exit(9)
+
+def mascotas():
+    print_menus.menumasc()
+    ok = False
+    while ok == False:
+        num = input("Introduzca número: ")
+
+        if num == "1":
+            #mostrar mascotas
+            ok = True
+        elif num == "2":
+            altamasc()
+            ok = True
+
+def altamasc():
+    print("")
+    print("   ---Por favor, introduzca poco a poco los datos---   ")
+    print("")
+
+    ok = False
+
+    while ok == False:
+        dni = input("Introduzca el DNI del dueño: ")
+        if dni.upper() in clientID:
+            ok = True
+
+    nom = input("Introduzca el nombre de la mascota: ")
+    kind = input("Introduzca la raza: ")
+    genre = input("Introduzca su sexo: ")
+
+    # posición del dni del cliente
+    leido = len(clientID)
+    ok = False
+    pos = 0
+    i = 0
+    while i < leido and ok == False:
+        if dni.upper() == clientID[i].upper():
+            pos = i
+            ok = True
+        i = i + 1
+
+    #numero de mascotas anteriores a mí
+    cont = 0
+    for i in range(0, pos):
+        cont = cont + clientPet[i]
+
+    #númmero de mascotas después de mí contando las mías
+    cont = cont + clientPet[pos]
+
+    #mover todas las mascotas posteriores a mí una posición más adelante
+    petName.append(nom)
 
 def altaclien():
     print_menus.altaclien()
@@ -249,5 +307,7 @@ def clientes():
             ok = True
         elif num == "9":
             main()
+
+
 
 main()
