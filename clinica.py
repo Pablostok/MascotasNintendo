@@ -55,15 +55,14 @@ def main():
 
 
 def devmasc(numclien):
-    print(numclien)
     nummasc = clientPet[numclien]
-
     leido = len(clientID)
+    # Hasta aquí bien
 
     if numclien == 0:
         posanterior = clientPet[0]
     else:
-        posanterior = clientPet[numclien]
+        posanterior = clientPet[numclien-1]
 
     if nummasc == 0:
         return True
@@ -248,9 +247,6 @@ def bajaclien():
                     ook = True
         ok = True
 
-
-
-
 def buscanom():
     print("")
     nom = input("Introduzca el nombre a buscar: ")
@@ -417,12 +413,14 @@ def clientes():
                     print("1. " + clientName[i] + " " + clientSurname[i])
                     print("   " + "DNI:      " + clientID[i])
                     print("   " + "Teléfono: " + clientPhone[i])
+                    devmasc(i)
                     print("")
                 else:
                     o = str(i + 1)
                     print(o + ". " + clientName[i] + " " + clientSurname[i])
                     print("   " + "DNI:      " + clientID[i])
                     print("   " + "Teléfono: " + clientPhone[i])
+                    devmasc(i)
                     print("")
             ook = False
             while ook == False:
