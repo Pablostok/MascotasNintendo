@@ -56,16 +56,6 @@ def devmasc(numclien):
     nummasc = clientPet[numclien]
 
     leido = len(clientID)
-    #Hasta aqui bien
-
-    # if numclien == 0:
-    #     posanterior = clientPet[0]
-    # else:
-    #     posanterior = clientPet[numclien]
-    #
-    # print(posanterior)
-
-
 
 
     if nummasc != 0:
@@ -96,6 +86,15 @@ def mascotas():
             ok = True
         elif num == "2":
             altamasc()
+            ok = True
+        elif num == "3":
+            #bajamasc
+            ok = True
+        elif num == "4":
+            #buscamasc
+            ok = True
+        elif num == "9":
+            main()
             ok = True
 
 
