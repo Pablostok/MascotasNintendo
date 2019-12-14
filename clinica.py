@@ -51,7 +51,6 @@ def main():
         elif num == "9":
             exit(9)
 
-
 def devmasc(numclien):
     nummasc = clientPet[numclien]
 
@@ -74,6 +73,14 @@ def devmasc(numclien):
             print("   " + "Pet " + o + ": " + petName[i] + " - " + petKind[i] + "(" + petGenre[i] + ")")
             num = num + 1
 
+def averiguarNom(DNI):
+    leido = len(clientID)
+    aux = ""
+
+    for i in range(0, leido):
+        if DNI == clientID[i]:
+            aux = clientName[i]
+    return aux
 
 def mascotas():
     print_menus.menumasc()
@@ -82,13 +89,22 @@ def mascotas():
         num = input("Introduzca número: ")
 
         if num == "1":
-            # mostrar mascotas
+            print("")
+            leido = len(petOwner)
+
+            for i in range(0, leido):
+                o = str(i)
+                print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+                print("   " + "Raza:  " + petKind[i])
+                nombre = averiguarNom(petOwner[i])
+                print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+                print("")
             ok = True
         elif num == "2":
             altamasc()
             ok = True
         elif num == "3":
-            #bajamasc
+            bajamasc()
             ok = True
         elif num == "4":
             #buscamasc
@@ -97,8 +113,78 @@ def mascotas():
             main()
             ok = True
 
+def bajamasc():
+    print_menus.bajamasc()
+    print("")
+    leido = len(petOwner)
+
+    for i in range(0, leido):
+        o = str(i)
+        print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+        print("   " + "Raza:  " + petKind[i])
+        nombre = averiguarNom(petOwner[i])
+        print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+        print("")
+
+    print("")
+    print("")
+    ok = False
+    while ok == False:
+        aux = input("Introduce el número de la mascota a borrar: ")
+        num = int(aux)
+        if num < leido:
+            ok = True
+    print("")
+    print("")
+    print("   ---¿Estás seguro de que quieres eliminar a esta mascota?---   ")
+    o = str(num)
+    print(o + ". " + petName[num] + "(" + petGenre[num] + ")")
+    print("   " + "Raza:  " + petKind[num])
+    nombre = averiguarNom(petOwner[num])
+    print("   " + "Dueño: " + petOwner[num] + " - " + nombre)
+    print("")
+
+    ok = False
+    while ok == False:
+        resp = input("S/N: ")
+        if resp.upper() == "S":
+            del (petName[num])
+            del (petOwner[num])
+            del (petKind[num])
+            del (petGenre[num])
+            # restar 1 al clientPet correspondiente
+            ok = True
+        elif resp.upper() == "N":
+            ook = False
+            while ook == False:
+                print("---¿Quieres volver a la baja (B) o al menú de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca B o M: ")
+                if resp.upper() == "B":
+                    bajamasc()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+        ok = True
+
+    ook = False
+
+    while ook == False:
+        print("---¿Quieres volver al menú de mascotas (M) o al principal (P)?---")
+        print("")
+        resp = input("Introduzca M o P: ")
+        if resp.upper() == "M":
+            mascotas()
+            ook = True
+        elif resp.upper() == "P":
+            main()
+            ook = True
+
+
 
 def altamasc():
+    print_menus.altamasc()
     print("")
     print("   ---Por favor, introduzca poco a poco los datos---   ")
     print("")
@@ -219,7 +305,6 @@ def altaclien():
             main()
             ook = True
 
-
 def bajaclien():
     print_menus.bajaclien()
 
@@ -294,9 +379,6 @@ def bajaclien():
                     ook = True
         ok = True
 
-
-
-
 def buscanom():
     print("")
     nom = input("Introduzca el nombre a buscar: ")
@@ -329,7 +411,6 @@ def buscanom():
         elif resp.upper() == "P":
             main()
             ook = True
-
 
 def buscatel():
     print("")
@@ -373,7 +454,6 @@ def buscatel():
         elif resp.upper() == "P":
             main()
             ook = True
-
 
 def buscaDNI():
     print("")
@@ -419,7 +499,6 @@ def buscaDNI():
             main()
             ook = True
 
-
 def buscaclien():
     print_menus.buscaclien()
     print("")
@@ -442,7 +521,6 @@ def buscaclien():
         elif resp == "9":
             clientes()
             ok = True
-
 
 def clientes():
     print_menus.menuclien()
