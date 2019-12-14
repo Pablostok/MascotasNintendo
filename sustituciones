@@ -1,0 +1,3 @@
+        aux = petGenre[i]
+        petGenre[i-1] = petGenre[i]
+        petGenre[i] = aux

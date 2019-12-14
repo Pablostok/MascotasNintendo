@@ -129,10 +129,116 @@ def mascotas():
             bajamasc()
             ok = True
         elif num == "4":
-            #buscamasc
+            buscamasc()
             ok = True
         elif num == "9":
             main()
+            ok = True
+
+def buscaduenio():
+    print("")
+
+    ok = False
+
+    while ok == False:
+        DNI = input("Introduzca DNI del dueño: ")
+        okis = utilities.checkID(DNI)
+        if okis == True and DNI in petOwner:
+            ok = True
+
+    print("")
+
+    leido = len(petOwner)
+
+    for i in range(0, leido):
+        if DNI.upper() in petOwner[i]:
+            print("")
+            o = str(i)
+            print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+            print("   " + "Raza:  " + petKind[i])
+            nombre = averiguarNom(petOwner[i])
+            print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+            print("")
+
+
+    ook = False
+    while ook == False:
+        print("---¿Quieres volver a la busqueda (B) o al menú de mascotas (M)?---")
+        print("")
+        resp = input("Introduzca B o M: ")
+        if resp.upper() == "B":
+            buscamasc()
+            ook = True
+        elif resp.upper() == "M":
+            mascotas()
+            ook = True
+
+def buscanombreM():
+    print("")
+    ok = False
+    while ok == False:
+        nom = input("Introduzca el nombre de la mascota: ")
+        print("")
+
+        leido = len(petName)
+
+        for i in range(0, leido):
+            if nom.upper() in petName[i]:
+                print("")
+                o = str(i)
+                print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+                print("   " + "Raza:  " + petKind[i])
+                nombre = averiguarNom(petOwner[i])
+                print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+                print("")
+
+        ook = False
+        while ook == False:
+            print("---¿Quieres volver a la busqueda (B) o al menú de mascotas (M)?---")
+            print("")
+            resp = input("Introduzca B o M: ")
+            if resp.upper() == "B":
+                buscamasc()
+                ook = True
+                ok = True
+            elif resp.upper() == "M":
+                mascotas()
+                ook = True
+                ok = True
+
+def buscaraza():
+    return True
+
+def buscagenero():
+    return True
+
+def buscamasc():
+    print_menus.buscamasc()
+    print("")
+
+    ok = False
+
+    while ok == False:
+        resp = input("Introduzca número: ")
+        print("")
+        if resp == "1":
+            buscaduenio()
+            ok = True
+
+        elif resp == "2":
+            buscanombreM()
+            ok = True
+
+        elif resp == "3":
+            buscaraza()
+            ok = True
+
+        elif resp == "4":
+            buscagenero()
+            ok = True
+
+        elif resp == "9":
+            mascotas()
             ok = True
 
 def bajamasc():
