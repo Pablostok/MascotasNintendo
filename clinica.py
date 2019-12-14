@@ -79,7 +79,16 @@ def averiguarNom(DNI):
 
     for i in range(0, leido):
         if DNI == clientID[i]:
-            aux = clientName[i]
+            aux = clientName[i] + " " + clientSurname[i]
+    return aux
+
+def devnum(DNI):
+    leido = len(clientID)
+    aux = 0
+
+    for i in range(0, leido):
+        if DNI == clientID[i]:
+            aux = i
     return aux
 
 def mascotas():
@@ -99,6 +108,19 @@ def mascotas():
                 nombre = averiguarNom(petOwner[i])
                 print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
                 print("")
+
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de mascotas (M) o al principal (P)?---")
+                print("")
+                resp = input("Introduzca M o P: ")
+                if resp.upper() == "M":
+                    mascotas()
+                    ook = True
+                elif resp.upper() == "P":
+                    main()
+                    ook = True
             ok = True
         elif num == "2":
             altamasc()
@@ -148,11 +170,15 @@ def bajamasc():
     while ok == False:
         resp = input("S/N: ")
         if resp.upper() == "S":
+            numero = devnum(petOwner[num])
             del (petName[num])
             del (petOwner[num])
             del (petKind[num])
             del (petGenre[num])
-            # restar 1 al clientPet correspondiente
+            clientPet[numero] = clientPet[numero] - 1
+            print("")
+            print("   ---Borrada correctamente---   ")
+            print("")
             ok = True
         elif resp.upper() == "N":
             ook = False
@@ -180,8 +206,6 @@ def bajamasc():
         elif resp.upper() == "P":
             main()
             ook = True
-
-
 
 def altamasc():
     print_menus.altamasc()
@@ -220,11 +244,13 @@ def altamasc():
     pos = cont + clientPet[pos]
 
     # mover todas las mascotas posteriores a mí una posición más adelante
-
+    numero = devnum(dni)
+    clientPet[numero] = clientPet[numero] + 1
     petName.append(nom)
     petOwner.append(dni)
     petKind.append(kind)
     petGenre.append(genre)
+
 
     tamani = len(petName)
 
@@ -248,11 +274,11 @@ def altamasc():
     ook = False
     while ook == False:
         print("")
-        print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")
+        print("---¿Quieres volver al menú de clientes (M) o al principal (P)?---")
         print("")
-        resp = input("Introduzca C o P: ")
-        if resp.upper() == "C":
-            clientes()
+        resp = input("Introduzca M o P: ")
+        if resp.upper() == "M":
+            mascotas()
             ook = True
         elif resp.upper() == "P":
             main()
