@@ -15,16 +15,14 @@ def copyright():
 #########################################################################################
 clientName = ["Manuel", "Vanesa", "David", "Pablo", "Pablo"]
 clientSurname = ["Carrasco", "Martín", "Bisbal", "Alborán", "López"]
-clientID = ["00000000M", "00000000V", "00000000D", "00000000P", "00000001P"]
+clientID = ["12121212M", "27272727V", "17171717D", "15151515N", "13131313S"]
 clientPhone = ["111111111", "222222222", "333333333", "444444444", "555555555"]
 #########################################################################################
 clientPet = [1, 3, 0, 1, 1]
-petOwner = ["00000000M", "00000000V", "00000000V", "00000000V", "00000000P", "00000001P"]
+petOwner = ["12121212M", "27272727V", "27272727V", "27272727V", "15151515N", "13131313S"]
 petName = ["Toad", "Pikachu", "Furret", "Yoshi", "Luigi", "Bulbasur"]
 petKind = ["Perro", "Hamster", "Hurón", "Perro", "Pato", "Tortuga"]
 petGenre = ["H", "M", "H", "M", "M", "H"]
-
-
 #########################################################################################
 
 def main():
@@ -55,22 +53,36 @@ def main():
 
 
 def devmasc(numclien):
-    print(numclien)
     nummasc = clientPet[numclien]
 
     leido = len(clientID)
+    #Hasta aqui bien
 
-    if numclien == 0:
-        posanterior = clientPet[0]
-    else:
-        posanterior = clientPet[numclien]
+    # if numclien == 0:
+    #     posanterior = clientPet[0]
+    # else:
+    #     posanterior = clientPet[numclien]
+    #
+    # print(posanterior)
 
-    if nummasc == 0:
-        return True
-    else:
-        for i in range(posanterior, nummasc):
-            o = str(i)
+
+
+
+    if nummasc != 0:
+
+        cont = 0
+
+        for i in range(0, numclien):
+            cont = cont + clientPet[i]
+
+        posfinal = cont + nummasc
+
+        num = 1
+
+        for i in range(cont, posfinal):
+            o = str(num)
             print("   " + "Pet " + o + ": " + petName[i] + " - " + petKind[i] + "(" + petGenre[i] + ")")
+            num = num + 1
 
 
 def mascotas():
@@ -119,12 +131,47 @@ def altamasc():
     for i in range(0, pos):
         cont = cont + clientPet[i]
 
-    # númmero de mascotas después de mí contando las mías
-    cont = cont + clientPet[pos]
+    # númmero de mascotas antes de mí contando las mías
+    pos = cont + clientPet[pos]
 
     # mover todas las mascotas posteriores a mí una posición más adelante
-    petName.append(nom)
 
+    petName.append(nom)
+    petOwner.append(dni)
+    petKind.append(kind)
+    petGenre.append(genre)
+
+    tamani = len(petName)
+
+    for i in range(tamani-1, pos, -1):
+        aux = petName[i-1]
+        petName[i-1] = petName[i]
+        petName[i] = aux
+
+        aux = petOwner[i-1]
+        petOwner[i-1] = petOwner[i]
+        petOwner[i] = aux
+
+        aux = petKind[i-1]
+        petKind[i-1] = petKind[i]
+        petKind[i] = aux
+
+        aux = petGenre[i-1]
+        petGenre[i-1] = petGenre[i]
+        petGenre[i] = aux
+
+    ook = False
+    while ook == False:
+        print("")
+        print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")
+        print("")
+        resp = input("Introduzca C o P: ")
+        if resp.upper() == "C":
+            clientes()
+            ook = True
+        elif resp.upper() == "P":
+            main()
+            ook = True
 
 def altaclien():
     print_menus.altaclien()
@@ -417,12 +464,14 @@ def clientes():
                     print("1. " + clientName[i] + " " + clientSurname[i])
                     print("   " + "DNI:      " + clientID[i])
                     print("   " + "Teléfono: " + clientPhone[i])
+                    devmasc(i)
                     print("")
                 else:
                     o = str(i + 1)
                     print(o + ". " + clientName[i] + " " + clientSurname[i])
                     print("   " + "DNI:      " + clientID[i])
                     print("   " + "Teléfono: " + clientPhone[i])
+                    devmasc(i)
                     print("")
             ook = False
             while ook == False:
