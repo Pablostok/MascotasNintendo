@@ -160,7 +160,6 @@ def buscaduenio():
             print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
             print("")
 
-
     ook = False
     while ook == False:
         print("---¿Quieres volver a la busqueda (B) o al menú de mascotas (M)?---")
@@ -182,8 +181,10 @@ def buscanombreM():
 
         leido = len(petName)
 
+        cont = 0
+
         for i in range(0, leido):
-            if nom.upper() in petName[i]:
+            if nom.upper() in petName[i].upper():
                 print("")
                 o = str(i)
                 print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
@@ -191,26 +192,108 @@ def buscanombreM():
                 nombre = averiguarNom(petOwner[i])
                 print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
                 print("")
+                cont = cont + 1
 
-        ook = False
-        while ook == False:
-            print("---¿Quieres volver a la busqueda (B) o al menú de mascotas (M)?---")
+        if cont == 0:
+            print("   ---No existen mascotas con ese nombre---   ")
             print("")
-            resp = input("Introduzca B o M: ")
-            if resp.upper() == "B":
-                buscamasc()
-                ook = True
-                ok = True
-            elif resp.upper() == "M":
-                mascotas()
-                ook = True
-                ok = True
+            ok = True
+        else:
+            ok = True
+
+    ook = False
+    while ook == False:
+        print("---¿Quieres volver a la busqueda (B) o al menú de mascotas (M)?---")
+        print("")
+        resp = input("Introduzca B o M: ")
+        if resp.upper() == "B":
+            buscamasc()
+            ook = True
+        elif resp.upper() == "M":
+            mascotas()
+            ook = True
 
 def buscaraza():
-    return True
+    print("")
+    ok = False
+    while ok == False:
+        kind = input("Introduzca la raza de la mascota: ")
+        print("")
+
+        leido = len(petKind)
+
+        cont = 0
+
+        for i in range(0, leido):
+            if kind.upper() in petKind[i].upper():
+                print("")
+                o = str(i)
+                print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+                print("   " + "Raza:  " + petKind[i])
+                nombre = averiguarNom(petOwner[i])
+                print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+                print("")
+                cont = cont + 1
+
+        if cont == 0:
+            print("   ---No existen mascotas con esa raza---   ")
+            print("")
+            ok = True
+        else:
+            ok = True
+
+    ook = False
+    while ook == False:
+        print("---¿Quieres volver a la busqueda (B) o al menú de mascotas (M)?---")
+        print("")
+        resp = input("Introduzca B o M: ")
+        if resp.upper() == "B":
+            buscamasc()
+            ook = True
+        elif resp.upper() == "M":
+            mascotas()
+            ook = True
 
 def buscagenero():
-    return True
+    print("")
+    ok = False
+    while ok == False:
+        gen = input("Introduzca el sexo de la mascota: ")
+        print("")
+
+        leido = len(petGenre)
+
+        cont = 0
+
+        for i in range(0, leido):
+            if gen.upper() in petGenre[i].upper():
+                print("")
+                o = str(i)
+                print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+                print("   " + "Raza:  " + petKind[i])
+                nombre = averiguarNom(petOwner[i])
+                print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+                print("")
+                cont = cont + 1
+
+        if cont == 0:
+            print("   ---No existen mascotas con ese sexo---   ")
+            print("")
+            ok = True
+        else:
+            ok = True
+
+    ook = False
+    while ook == False:
+        print("---¿Quieres volver a la busqueda (B) o al menú de mascotas (M)?---")
+        print("")
+        resp = input("Introduzca B o M: ")
+        if resp.upper() == "B":
+            buscamasc()
+            ook = True
+        elif resp.upper() == "M":
+            mascotas()
+            ook = True
 
 def buscamasc():
     print_menus.buscamasc()
@@ -380,7 +463,7 @@ def altamasc():
     ook = False
     while ook == False:
         print("")
-        print("---¿Quieres volver al menú de clientes (M) o al principal (P)?---")
+        print("---¿Quieres volver al menú de mascotas (M) o al principal (P)?---")
         print("")
         resp = input("Introduzca M o P: ")
         if resp.upper() == "M":
