@@ -18,40 +18,51 @@ clientSurname = ["Carrasco", "Martín", "Bisbal", "Alborán", "López"]
 clientID = ["12121212M", "27272727V", "17171717D", "15151515N", "13131313S"]
 clientPhone = ["111111111", "222222222", "333333333", "444444444", "555555555"]
 clientPet = [1, 3, 0, 1, 1]
+# clientName = []
+# clientSurname = []
+# clientID = []
+# clientPhone = []
+# clientPet = []
 #########################################################################################-
 petOwner = ["12121212M", "27272727V", "27272727V", "27272727V", "15151515N", "13131313S"]
 petName = ["Toad", "Pikachu", "Furret", "Yoshi", "Luigi", "Bulbasur"]
 petKind = ["Perro", "Hamster", "Hurón", "Perro", "Pato", "Tortuga"]
 petGenre = ["H", "M", "H", "M", "M", "H"]
 #########################################################################################
-ruta = '.\\data\\'
-file = open(ruta + "clientes.txt", "w")
+def refresh():
+    ruta = '.\\data\\'
+    file = open(ruta + "clientes.txt", "w")
 
-leido = len(clientName)
+    leido = len(clientName)
 
-for i in range(0, leido):
-    file.write(clientName[i] + "\n")
-    file.write(clientSurname[i] + "\n")
-    file.write(clientID[i] + "\n")
-    file.write(clientPhone[i] + "\n")
-    cp = str(clientPet[i])
-    file.write(cp + "\n")
+    for i in range(0, leido):
+        file.write(clientName[i] + "\n")
+        file.write(clientSurname[i] + "\n")
+        file.write(clientID[i] + "\n")
+        file.write(clientPhone[i] + "\n")
+        cp = str(clientPet[i])
+        file.write(cp + "\n")
 
-file.close()
+    file.close()
 
-i = 1
+    i = 1
 
-with open(ruta + "clientes.txt", 'r') as reader:
-    for line in reader:
-        if i == 1:
-            clientName.append(line)
-        elif i == 2:
-            clientSurname.append(line)
-        elif i == 3:
-            clientID.append(line)
-        i = i + 1
-        print(line)
-        print(reader)
+    with open(ruta + "clientes.txt", 'r') as reader:
+        for line in reader:
+            if i == 1:
+                clientName.append(line[:-1])
+            elif i == 2:
+                clientSurname.append(line[:-1])
+            elif i == 3:
+                clientID.append(line[:-1])
+            elif i == 4:
+                clientPhone.append(line[:-1])
+            elif i == 5:
+                cp = int(line[:-1])
+                clientPet.append(cp)
+            i = i + 1
+            if i == 6:
+                i = 1
 
 def main():
     print_menus.principalmenu()
@@ -817,5 +828,5 @@ def clientes():
         elif num == "9":
             main()
 
-
+refresh()
 main()
