@@ -64,6 +64,34 @@ def refresh():
             if i == 6:
                 i = 1
 
+    file = open(ruta + "mascotas.txt", "w")
+
+    leido = len(petOwner)
+
+    for i in range(0, leido):
+        file.write(petName[i] + "\n")
+        file.write(petOwner[i] + "\n")
+        file.write(petKind[i] + "\n")
+        file.write(petGenre[i] + "\n")
+
+    file.close()
+
+    i = 1
+
+    with open(ruta + "mascotas.txt", 'r') as reader:
+        for line in reader:
+            if i == 1:
+                petName.append(line[:-1])
+            elif i == 2:
+                petOwner.append(line[:-1])
+            elif i == 3:
+                petKind.append(line[:-1])
+            elif i == 4:
+                petGenre.append(line[:-1])
+            i = i + 1
+            if i == 5:
+                i = 1
+
 def main():
     print_menus.principalmenu()
 

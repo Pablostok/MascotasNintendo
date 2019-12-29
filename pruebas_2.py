@@ -24,42 +24,69 @@ petName = ["Toad", "Pikachu", "Furret", "Yoshi", "Luigi", "Bulbasur"]
 petKind = ["Perro", "Hamster", "Hurón", "Perro", "Pato", "Tortuga"]
 petGenre = ["H", "M", "H", "M", "M", "H"]
 #########################################################################################
-ruta = '.\\data\\'
-file = open(ruta + "clientes.txt", "a")
 
-leido = len(clientName)
+def refresh():
+    ruta = '.\\data\\'
+    file = open(ruta + "clientes.txt", "w")
 
-for i in range(0, leido):
-    file.write(clientName[i] + "\n")
-    file.write(clientSurname[i] + "\n")
-    file.write(clientID[i] + "\n")
-    file.write(clientPhone[i] + "\n")
-    cp = str(clientPet[i])
-    file.write(cp + "\n")
+    leido = len(clientName)
 
-file.close()
+    for i in range(0, leido):
+        file.write(clientName[i] + "\n")
+        file.write(clientSurname[i] + "\n")
+        file.write(clientID[i] + "\n")
+        file.write(clientPhone[i] + "\n")
+        cp = str(clientPet[i])
+        file.write(cp + "\n")
 
-i = 1
+    file.close()
 
-with open(ruta + "clientes.txt", 'r') as reader:
-    for line in reader:
-        if i == 1:
-            clientName.append(line[:-1])
-        elif i == 2:
-            clientSurname.append(line[:-1])
-        elif i == 3:
-            clientID.append(line[:-1])
-        elif i == 4:
-            clientPhone.append(line[:-1])
-        elif i == 5:
-            cp = int(line[:-1])
-            clientPet.append(cp)
-        i = i + 1
-        if i == 6:
-            i = 1
+    i = 1
 
+    with open(ruta + "clientes.txt", 'r') as reader:
+        for line in reader:
+            if i == 1:
+                clientName.append(line[:-1])
+            elif i == 2:
+                clientSurname.append(line[:-1])
+            elif i == 3:
+                clientID.append(line[:-1])
+            elif i == 4:
+                clientPhone.append(line[:-1])
+            elif i == 5:
+                cp = int(line[:-1])
+                clientPet.append(cp)
+            i = i + 1
+            if i == 6:
+                i = 1
 
+    file = open(ruta + "mascotas.txt", "w")
 
+    leido = len(petOwner)
+
+    for i in range(0, leido):
+        file.write(petName[i] + "\n")
+        file.write(petOwner[i] + "\n")
+        file.write(petKind[i] + "\n")
+        file.write(petGenre[i] + "\n")
+
+    file.close()
+
+    i = 1
+
+    with open(ruta + "mascotas.txt", 'r') as reader:
+        for line in reader:
+            if i == 1:
+                petName.append(line[:-1])
+            elif i == 2:
+                petOwner.append(line[:-1])
+            elif i == 3:
+                petKind.append(line[:-1])
+            elif i == 4:
+                petGenre.append(line[:-1])
+            i = i + 1
+            if i == 5:
+                i = 1
 
 def main():
     print_menus.principalmenu()
@@ -825,5 +852,5 @@ def clientes():
         elif num == "9":
             main()
 
-
+refresh()
 main()
