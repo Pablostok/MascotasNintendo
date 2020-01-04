@@ -128,6 +128,9 @@ def main():
             savemasc()
             exit(9)
 
+def editclien():
+    return True
+
 def devmasc(numclien):
     nummasc = clientPet[numclien]
 
@@ -443,6 +446,7 @@ def bajamasc():
             del (petGenre[num])
             clientPet[numero] = clientPet[numero] - 1
             print("")
+            savemasc()
             print("   ---Borrada correctamente---   ")
             print("")
             ok = True
@@ -642,6 +646,8 @@ def bajaclien():
             del(clientSurname[i])
             del(clientPhone[i])
             del(clientID[i])
+
+            saveclien()
 
             print("")
             print("   ---Borrado/a corréctamente---   ")
@@ -866,6 +872,9 @@ def clientes():
             bajaclien()
             ok = True
         elif num == "4":
+            editclien()
+            ok = True
+        elif num == "5":
             buscaclien()
             ok = True
         elif num == "9":
