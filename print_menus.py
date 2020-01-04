@@ -150,7 +150,7 @@ def buscamasc():
     print("# 9. Atrás                                                    #")
     print("###############################################################")
 
-def editclien():
+def editclien2():
     clean()
 
     print("###############################################################")
@@ -164,11 +164,54 @@ def editclien():
     print("#                                                             #")
     print("#                 ¿Qué necesitas hacer?                       #")
     print("#                                                             #")
-    print("# 1. Mostrar clientes                                         #")
-    print("# 2. Alta clientes                                            #")
-    print("# 3. Baja clientes                                            #")
-    print("# 4. Editar clientes                                          #")
-    print("# 5. Buscar clientes                                          #")
+    print("# 1. Editar nombre                                            #")
+    print("# 2. Editar apellidos                                         #")
+    print("# 3. Editar número de teléfono                                #")
     print("#                                                             #")
     print("# 9. Atrás                                                    #")
+    print("###############################################################")
+
+def editclien1():
+    clean()
+
+    print("###############################################################")
+    print("#                                                             #")
+    print("#                    EDICIÓN CLIENTES                         #")
+    print("#                                                             #")
+    print("#                 ---Mascotas Nintendo---                     #")
+    print("#                                                             #")
+    print("#                                                             #")
+    print("###############################################################")
+
+def editmasc2():
+    clean()
+
+    print("###############################################################")
+    print("#                                                             #")
+    print("#                    EDICIÓN MASCOTAS                         #")
+    print("#                                                             #")
+    print("#                 ---Mascotas Nintendo---                     #")
+    print("#                                                             #")
+    print("#                                                             #")
+    print("#*************************************************************#")
+    print("#                                                             #")
+    print("#                 ¿Qué necesitas hacer?                       #")
+    print("#                                                             #")
+    print("# 1. Editar nombre                                            #")
+    print("# 2. Editar raza                                              #")
+    print("# 3. Editar sexo                                              #")
+    print("#                                                             #")
+    print("# 9. Atrás                                                    #")
+    print("###############################################################")
+
+def editmasc1():
+    clean()
+
+    print("###############################################################")
+    print("#                                                             #")
+    print("#                    EDICIÓN MASCOTAS                         #")
+    print("#                                                             #")
+    print("#                 ---Mascotas Nintendo---                     #")
+    print("#                                                             #")
+    print("#                                                             #")
     print("###############################################################")

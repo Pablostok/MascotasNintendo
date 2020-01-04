@@ -129,7 +129,115 @@ def main():
             exit(9)
 
 def editclien():
-    return True
+    print_menus.editclien1()
+    mostrarclientes()
+    print("")
+    nu = input("Introduzca el número del cliente a editar: ")
+    num = int(nu)
+    print("")
+    i = num
+    o = str(i)
+    print(o + ". " + clientName[i] + " " + clientSurname[i])
+    print("   " + "DNI:      " + clientID[i])
+    print("   " + "Teléfono: " + clientPhone[i])
+    devmasc(i)
+    print("")
+
+    ok = False
+    while ok == False:
+        print("   ---¿Quiere editar a este cliente?---   ")
+        resp = input("S/N: ")
+
+        if resp.upper() == "S":
+            editaclien(i)
+            ok = True
+        elif resp.upper() == "N":
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de clientes (C)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    clientes()
+                    ook = True
+            ok = True
+
+def editaclien(num):
+    print_menus.editclien2()
+    ok = False
+    while ok == False:
+        print()
+        num = input("Introduzca número: ")
+
+        if num == "1":
+            #edinombrec
+            ok = True
+        elif num == "2":
+            #editapec
+            ok = True
+        elif num == "3":
+            #edittelc
+            ok = True
+
+def editmasc():
+    print_menus.editmasc1()
+    mostrarmasc()
+    print("")
+    nu = input("Introduzca el número de la mascota a editar: ")
+    num = int(nu)
+    print("")
+    i = num
+    o = str(i)
+    print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+    print("   " + "Raza:  " + petKind[i])
+    nombre = averiguarNom(petOwner[i])
+    print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+    print("")
+    print("")
+
+    ok = False
+    while ok == False:
+        print("   ---¿Quiere editar a esta mascota?---   ")
+        resp = input("S/N: ")
+
+        if resp.upper() == "S":
+            editamasc(i)
+            ok = True
+        elif resp.upper() == "N":
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editmasc()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+            ok = True
+
+def editamasc(num):
+    print_menus.editmasc2()
+    ok = False
+    while ok == False:
+        print()
+        num = input("Introduzca número: ")
+
+        if num == "1":
+            #editnombrem
+            ok = True
+        elif num == "2":
+            #editraza
+            ok = True
+        elif num == "3":
+            #editsexo
+            ok = True
 
 def devmasc(numclien):
     nummasc = clientPet[numclien]
@@ -178,17 +286,7 @@ def mascotas():
         num = input("Introduzca número: ")
 
         if num == "1":
-            print("")
-            leido = len(petOwner)
-
-            for i in range(0, leido):
-                o = str(i)
-                print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
-                print("   " + "Raza:  " + petKind[i])
-                nombre = averiguarNom(petOwner[i])
-                print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
-                print("")
-
+            mostrarmasc()
             ook = False
 
             while ook == False:
@@ -214,6 +312,18 @@ def mascotas():
         elif num == "9":
             main()
             ok = True
+
+def mostrarmasc():
+    print("")
+    leido = len(petOwner)
+
+    for i in range(0, leido):
+        o = str(i)
+        print(o + ". " + petName[i] + "(" + petGenre[i] + ")")
+        print("   " + "Raza:  " + petKind[i])
+        nombre = averiguarNom(petOwner[i])
+        print("   " + "Dueño: " + petOwner[i] + " - " + nombre)
+        print("")
 
 def buscaduenio():
     print("")
@@ -831,30 +941,12 @@ def mostrarclientes():
     print("")
 
     for i in range(0, leido):
-        if i == 0:
-            print("1. " + clientName[i] + " " + clientSurname[i])
-            print("   " + "DNI:      " + clientID[i])
-            print("   " + "Teléfono: " + clientPhone[i])
-            devmasc(i)
-            print("")
-        else:
-            o = str(i + 1)
+            o = str(i)
             print(o + ". " + clientName[i] + " " + clientSurname[i])
             print("   " + "DNI:      " + clientID[i])
             print("   " + "Teléfono: " + clientPhone[i])
             devmasc(i)
             print("")
-    ook = False
-    while ook == False:
-        print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")
-        print("")
-        resp = input("Introduzca C o P: ")
-        if resp.upper() == "C":
-            clientes()
-            ook = True
-        elif resp.upper() == "P":
-            main()
-            ook = True
 
 def clientes():
     print_menus.menuclien()
@@ -866,6 +958,17 @@ def clientes():
 
         if num == "1":
             mostrarclientes()
+            ook = False
+            while ook == False:
+                print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")
+                print("")
+                resp = input("Introduzca C o P: ")
+                if resp.upper() == "C":
+                    clientes()
+                    ook = True
+                elif resp.upper() == "P":
+                    main()
+                    ook = True
             ok = True
         elif num == "2":
             altaclien()
