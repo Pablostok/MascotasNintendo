@@ -13,38 +13,28 @@ def copyright():
 
 
 #########################################################################################
-clientName = ["Manuel", "Vanesa", "David", "Pablo", "Pablo"]
-clientSurname = ["Carrasco", "Martín", "Bisbal", "Alborán", "López"]
-clientID = ["12121212M", "27272727V", "17171717D", "15151515N", "13131313S"]
-clientPhone = ["111111111", "222222222", "333333333", "444444444", "555555555"]
-clientPet = [1, 3, 0, 1, 1]
-# clientName = []
-# clientSurname = []
-# clientID = []
-# clientPhone = []
-# clientPet = []
+# clientName = ["Manuel", "Vanesa", "David", "Pablo", "Pablo"]
+# clientSurname = ["Carrasco", "Martín", "Bisbal", "Alborán", "López"]
+# clientID = ["12121212M", "27272727V", "17171717D", "15151515N", "13131313S"]
+# clientPhone = ["111111111", "222222222", "333333333", "444444444", "555555555"]
+# clientPet = [1, 3, 0, 1, 1]
+clientName = []
+clientSurname = []
+clientID = []
+clientPhone = []
+clientPet = []
 #########################################################################################-
-petOwner = ["12121212M", "27272727V", "27272727V", "27272727V", "15151515N", "13131313S"]
-petName = ["Toad", "Pikachu", "Furret", "Yoshi", "Luigi", "Bulbasur"]
-petKind = ["Perro", "Hamster", "Hurón", "Perro", "Pato", "Tortuga"]
-petGenre = ["H", "M", "H", "M", "M", "H"]
+petOwner = []
+petName = []
+petKind = []
+petGenre = []
+# petOwner = ["12121212M", "27272727V", "27272727V", "27272727V", "15151515N", "13131313S"]
+# petName = ["Toad", "Pikachu", "Furret", "Yoshi", "Luigi", "Bulbasur"]
+# petKind = ["Perro", "Hamster", "Hurón", "Perro", "Pato", "Tortuga"]
+# petGenre = ["H", "M", "H", "M", "M", "H"]
 #########################################################################################
 def refresh():
     ruta = '.\\data\\'
-    file = open(ruta + "clientes.txt", "w")
-
-    leido = len(clientName)
-
-    for i in range(0, leido):
-        file.write(clientName[i] + "\n")
-        file.write(clientSurname[i] + "\n")
-        file.write(clientID[i] + "\n")
-        file.write(clientPhone[i] + "\n")
-        cp = str(clientPet[i])
-        file.write(cp + "\n")
-
-    file.close()
-
     i = 1
 
     with open(ruta + "clientes.txt", 'r') as reader:
@@ -64,18 +54,6 @@ def refresh():
             if i == 6:
                 i = 1
 
-    file = open(ruta + "mascotas.txt", "w")
-
-    leido = len(petOwner)
-
-    for i in range(0, leido):
-        file.write(petName[i] + "\n")
-        file.write(petOwner[i] + "\n")
-        file.write(petKind[i] + "\n")
-        file.write(petGenre[i] + "\n")
-
-    file.close()
-
     i = 1
 
     with open(ruta + "mascotas.txt", 'r') as reader:
@@ -91,6 +69,34 @@ def refresh():
             i = i + 1
             if i == 5:
                 i = 1
+
+def save():
+    ruta = '.\\data\\'
+    file = open(ruta + "clientes.txt", "w")
+
+    leido = len(clientName)
+
+    for i in range(0, leido):
+        file.write(clientName[i] + "\n")
+        file.write(clientSurname[i] + "\n")
+        file.write(clientID[i] + "\n")
+        file.write(clientPhone[i] + "\n")
+        cp = str(clientPet[i])
+        file.write(cp + "\n")
+
+    file.close()
+
+    file = open(ruta + "mascotas.txt", "w")
+
+    leido = len(petOwner)
+
+    for i in range(0, leido):
+        file.write(petName[i] + "\n")
+        file.write(petOwner[i] + "\n")
+        file.write(petKind[i] + "\n")
+        file.write(petGenre[i] + "\n")
+
+    file.close()
 
 def main():
     print_menus.principalmenu()
@@ -116,6 +122,7 @@ def main():
             mascotas()
             ok = True
         elif num == "9":
+            save()
             exit(9)
 
 def devmasc(numclien):
@@ -478,7 +485,7 @@ def altamasc():
 
     nom = input("Introduzca el nombre de la mascota: ")
     kind = input("Introduzca la raza: ")
-    genre = input("Introduzca su sexo: ")
+    genre = input("Introduzca su sexo (H o M): ")
 
     # posición del dni del cliente
     leido = len(clientID)
@@ -568,6 +575,7 @@ def altaclien():
     clientSurname.append(sur)
     clientPhone.append(tel)
     clientID.append(DNI)
+    clientPet.append(0)
 
     print("")
     print("   ---Añadido/a corréctamente---   ")
@@ -857,4 +865,5 @@ def clientes():
             main()
 
 refresh()
+
 main()

@@ -2,7 +2,7 @@ Manuel
 Carrasco
 12121212M
 111111111
-1
+2
 Vanesa
 Martín
 27272727V
@@ -23,3 +23,8 @@ López
 13131313S
 555555555
 1
+Amanda
+I de Castilla
+16161616E
+000000000
+0
