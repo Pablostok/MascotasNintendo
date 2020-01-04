@@ -70,7 +70,7 @@ def refresh():
             if i == 5:
                 i = 1
 
-def save():
+def saveclien():
     ruta = '.\\data\\'
     file = open(ruta + "clientes.txt", "w")
 
@@ -86,6 +86,8 @@ def save():
 
     file.close()
 
+def savemasc():
+    ruta = '.\\data\\'
     file = open(ruta + "mascotas.txt", "w")
 
     leido = len(petOwner)
@@ -122,7 +124,8 @@ def main():
             mascotas()
             ok = True
         elif num == "9":
-            save()
+            saveclien()
+            savemasc()
             exit(9)
 
 def devmasc(numclien):
@@ -515,6 +518,7 @@ def altamasc():
     petGenre.append(genre)
 
 
+
     tamani = len(petName)
 
     for i in range(tamani-1, pos, -1):
@@ -533,6 +537,8 @@ def altamasc():
         aux = petGenre[i-1]
         petGenre[i-1] = petGenre[i]
         petGenre[i] = aux
+
+    savemasc()
 
     ook = False
     while ook == False:
@@ -576,6 +582,7 @@ def altaclien():
     clientPhone.append(tel)
     clientID.append(DNI)
     clientPet.append(0)
+    saveclien()
 
     print("")
     print("   ---Añadido/a corréctamente---   ")
