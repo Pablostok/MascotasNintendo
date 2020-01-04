@@ -3,8 +3,21 @@ def clean():
     clear = "\n" * 100
     print(clear)
 
+def copyright():
+    print("###############################################################")
+    print("#                                                             #")
+    print("#                  CLÍNICA VETERINARIA                        #")
+    print("#                ---Mascotas Nintendo---                      #")
+    print("#                                                             #")
+    print("#                                 Amanda G.P. & Pablo V.R.    #")
+    print("###############################################################")
+
 def principalmenu():
     clean()
+    copyright()
+    print("")
+    print("")
+    print("")
     print("###############################################################")
     print("#                                                             #")
     print("#                     MENÚ PRINCIPAL                          #")

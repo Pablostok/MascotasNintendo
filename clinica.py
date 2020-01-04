@@ -1,23 +1,7 @@
 import print_menus
 import utilities
 import codecs
-
-def copyright():
-    print("###############################################################")
-    print("#                                                             #")
-    print("#                  CLÍNICA VETERINARIA                        #")
-    print("#                ---Mascotas Nintendo---                      #")
-    print("#                                                             #")
-    print("#                                 Amanda G.P. & Pablo V.R.    #")
-    print("###############################################################")
-
-
 #########################################################################################
-# clientName = ["Manuel", "Vanesa", "David", "Pablo", "Pablo"]
-# clientSurname = ["Carrasco", "Martín", "Bisbal", "Alborán", "López"]
-# clientID = ["12121212M", "27272727V", "17171717D", "15151515N", "13131313S"]
-# clientPhone = ["111111111", "222222222", "333333333", "444444444", "555555555"]
-# clientPet = [1, 3, 0, 1, 1]
 clientName = []
 clientSurname = []
 clientID = []
@@ -28,10 +12,6 @@ petOwner = []
 petName = []
 petKind = []
 petGenre = []
-# petOwner = ["12121212M", "27272727V", "27272727V", "27272727V", "15151515N", "13131313S"]
-# petName = ["Toad", "Pikachu", "Furret", "Yoshi", "Luigi", "Bulbasur"]
-# petKind = ["Perro", "Hamster", "Hurón", "Perro", "Pato", "Tortuga"]
-# petGenre = ["H", "M", "H", "M", "M", "H"]
 #########################################################################################
 def refresh():
     ruta = '.\\data\\'
@@ -102,7 +82,6 @@ def savemasc():
 
 def main():
     print_menus.principalmenu()
-
     ok = False
     while ok == False:
 
@@ -173,15 +152,26 @@ def editaclien(num):
         print()
         num = input("Introduzca número: ")
 
+        aux = int(num)
+
         if num == "1":
-            #edinombrec
+            edinombrec(aux)
             ok = True
         elif num == "2":
-            #editapec
+            editapec(aux)
             ok = True
         elif num == "3":
-            #edittelc
+            edittelc(aux)
             ok = True
+
+def edinombrec(num):
+    return True
+
+def editapec(num):
+    return True
+
+def edittelc(num):
+    return True
 
 def editmasc():
     print_menus.editmasc1()
@@ -228,16 +218,26 @@ def editamasc(num):
     while ok == False:
         print()
         num = input("Introduzca número: ")
+        aux = int(num)
 
         if num == "1":
-            #editnombrem
+            editnombrem(aux)
             ok = True
         elif num == "2":
-            #editraza
+            editraza(aux)
             ok = True
         elif num == "3":
-            #editsexo
+            editsexo(aux)
             ok = True
+
+def editnombrem(num):
+    return True
+
+def editraza(num):
+    return True
+
+def editsexo(num):
+    return True
 
 def devmasc(numclien):
     nummasc = clientPet[numclien]
