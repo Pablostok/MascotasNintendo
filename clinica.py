@@ -825,6 +825,37 @@ def buscaclien():
             clientes()
             ok = True
 
+def mostrarclientes():
+    leido = len(clientID)
+
+    print("")
+
+    for i in range(0, leido):
+        if i == 0:
+            print("1. " + clientName[i] + " " + clientSurname[i])
+            print("   " + "DNI:      " + clientID[i])
+            print("   " + "Teléfono: " + clientPhone[i])
+            devmasc(i)
+            print("")
+        else:
+            o = str(i + 1)
+            print(o + ". " + clientName[i] + " " + clientSurname[i])
+            print("   " + "DNI:      " + clientID[i])
+            print("   " + "Teléfono: " + clientPhone[i])
+            devmasc(i)
+            print("")
+    ook = False
+    while ook == False:
+        print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")
+        print("")
+        resp = input("Introduzca C o P: ")
+        if resp.upper() == "C":
+            clientes()
+            ook = True
+        elif resp.upper() == "P":
+            main()
+            ook = True
+
 def clientes():
     print_menus.menuclien()
 
@@ -834,36 +865,7 @@ def clientes():
         num = input("Introduzca número: ")
 
         if num == "1":
-            # mostrar clientes
-            leido = len(clientID)
-
-            print("")
-
-            for i in range(0, leido):
-                if i == 0:
-                    print("1. " + clientName[i] + " " + clientSurname[i])
-                    print("   " + "DNI:      " + clientID[i])
-                    print("   " + "Teléfono: " + clientPhone[i])
-                    devmasc(i)
-                    print("")
-                else:
-                    o = str(i + 1)
-                    print(o + ". " + clientName[i] + " " + clientSurname[i])
-                    print("   " + "DNI:      " + clientID[i])
-                    print("   " + "Teléfono: " + clientPhone[i])
-                    devmasc(i)
-                    print("")
-            ook = False
-            while ook == False:
-                print("---¿Quieres volver al menú de clientes (C) o al principal (P)?---")
-                print("")
-                resp = input("Introduzca C o P: ")
-                if resp.upper() == "C":
-                    clientes()
-                    ook = True
-                elif resp.upper() == "P":
-                    main()
-                    ook = True
+            mostrarclientes()
             ok = True
         elif num == "2":
             altaclien()
