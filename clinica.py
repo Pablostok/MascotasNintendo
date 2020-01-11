@@ -202,11 +202,11 @@ def edinombrec(num):
             while ook == False:
                 print("---¿Quieres volver al menú de edición (E) o al de clientes (C)?---")
                 print("")
-                resp = input("Introduzca E o M: ")
+                resp = input("Introduzca E o C: ")
                 if resp.upper() == "E":
                     editclien()
                     ook = True
-                elif resp.upper() == "M":
+                elif resp.upper() == "C":
                     clientes()
                     ook = True
             ok = True
@@ -246,11 +246,11 @@ def edittelc(num):
             while ook == False:
                 print("---¿Quieres volver al menú de edición (E) o al de clientes (C)?---")
                 print("")
-                resp = input("Introduzca E o M: ")
+                resp = input("Introduzca E o C: ")
                 if resp.upper() == "E":
                     editclien()
                     ook = True
-                elif resp.upper() == "M":
+                elif resp.upper() == "C":
                     clientes()
                     ook = True
             ok = True
@@ -316,7 +316,46 @@ def editamasc(num):
 
 
 def editnombrem(num):
-    return True
+    print("")
+    print("")
+    nom = input("Introduzca el nuevo nombre de la mascota: ")
+    print("")
+    print("Estás seguro de que quieres cambiar el nombre de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + "del cliente:" + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " a este: " + nom)
+    ok = False
+    while ok == False:
+        res = input("S/N: ")
+        if res.upper() == "S":
+            nom = petName[num]
+            ID = petOwner[num]
+            gen = petGenre[num]
+            kind = petKind[num]
+            del (petName[num])
+            del (petOwner[num])
+            del (petGenre[num])
+            del (petKind[num])
+
+            petName.append(nom)
+            petOwner.append(ID)
+            petGenre.append(gen)
+            petKind.append(kind)
+            print("")
+            print("   ---Modificado corréctamente---   ")
+        elif res.upper() == "N":
+            print("")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+            ok = True
+
 
 
 def editraza(num):
