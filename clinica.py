@@ -156,15 +156,15 @@ def editaclien(num):
     ok = False
     while ok == False:
         print()
-        num = input("Introduzca número: ")
+        nu = input("Introduzca número: ")
 
-        aux = int(num)
+        aux = int(nu)
 
-        if num == "1":
-            edinombrec(aux)
+        if nu == "1":
+            edinombrec(num)
             ok = True
-        elif num == "2":
-            edittelc(aux)
+        elif nu == "2":
+            edittelc(num)
             ok = True
 
 
@@ -195,6 +195,19 @@ def edinombrec(num):
             clientPet.append(pet)
             print("")
             print("   ---Modificado corréctamente---   ")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de clientes (C)?---")
+                print("")
+                resp = input("Introduzca E o C: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "C":
+                    clientes()
+                    ook = True
+            ok = True
         elif res.upper() == "N":
             print("")
             ook = False
@@ -215,9 +228,15 @@ def edinombrec(num):
 def edittelc(num):
     print("")
     print("")
-    tel = input("Introduzca el nuevo teléfono del cliente: ")
+    ok = False
+    while ok == False:
+        tel = input("Introduzca el nuevo teléfono del cliente: ")
+        ook = utilities.checkphone(tel)
+        if ook == True:
+            ok = True
+
     print("")
-    print("Estás seguro de que quieres cambiar el teléfono del cliente: "+ averiguarNom(clientID[num]) +" - " + clientID[num] + "de este: " + clientPhone[num] +" a este: " + tel)
+    print("Estás seguro de que quieres cambiar el teléfono del cliente: "+ averiguarNom(clientID[num]) +" - " + clientID[num] + " de este: " + clientPhone[num] +" a este: " + tel)
     ok = False
     while ok == False:
         res = input("S/N: ")
@@ -238,6 +257,19 @@ def edittelc(num):
             clientPhone.append(tel)
             clientPet.append(pet)
             print("")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de clientes (C)?---")
+                print("")
+                resp = input("Introduzca E o C: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "C":
+                    clientes()
+                    ook = True
+            ok = True
             print("   ---Modificado corréctamente---   ")
         elif res.upper() == "N":
             print("")
@@ -301,18 +333,98 @@ def editamasc(num):
     ok = False
     while ok == False:
         print()
-        num = input("Introduzca número: ")
-        aux = int(num)
+        nu = input("Introduzca número: ")
+        aux = int(nu)
 
-        if num == "1":
-            editnombrem(aux)
+        if nu == "1":
+            editnombrem(num)
             ok = True
-        elif num == "2":
-            editraza(aux)
+        elif nu == "2":
+            editraza(num)
             ok = True
-        elif num == "3":
-            editsexo(aux)
+        elif nu == "3":
+            editsexo(num)
             ok = True
+        elif nu == "4":
+            editduenio(num)
+            ok = True
+
+
+def editduenio(num):
+    print("")
+    print("")
+    ok = False
+    while ok == False:
+        dni = input("Introduzca el DNI del nuevo dueño de la mascota: ")
+        ook = utilities.checkID(dni)
+        if ook == True:
+            ok = True
+    print("")
+    print("Estás seguro de que quieres cambiar el dueño de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + " del cliente: " + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " al cliente: ")
+    nuum = devnum(dni)
+    verclien(nuum)
+    aux = devnum(num)
+    ok = False
+    while ok == False:
+        res = input("S/N: ")
+        if res.upper() == "S":
+            nom = petName[num]
+            ID = clientID[nuum]
+            gen = petGenre[num]
+            kind = petKind[num]
+            del (petName[num])
+            del (petOwner[num])
+            del (petGenre[num])
+            del (petKind[num])
+            clientPet[aux] = clientPet[aux] - 1
+            clientPet[nuum] = clientPet[nuum] + 1
+
+            petName.append(nom)
+            petOwner.append(ID)
+            petGenre.append(gen)
+            petKind.append(kind)
+            print("")
+            print("   ---Modificado corréctamente---   ")
+            print("")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+            ok = True
+        elif res.upper() == "N":
+            print("")
+        elif res.upper() == "N":
+            print("")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+            ok = True
+
+
+def verclien(i):
+    o = str(i)
+    print(o + ". " + clientName[i] + " " + clientSurname[i])
+    print("   " + "DNI:      " + clientID[i])
+    print("   " + "Teléfono: " + clientPhone[i])
+    devmasc(i)
+    print("")
 
 
 def editnombrem(num):
@@ -320,7 +432,7 @@ def editnombrem(num):
     print("")
     nom = input("Introduzca el nuevo nombre de la mascota: ")
     print("")
-    print("Estás seguro de que quieres cambiar el nombre de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + "del cliente:" + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " a este: " + nom)
+    print("Estás seguro de que quieres cambiar el nombre de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + " del cliente: " + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " a este: " + nom)
     ok = False
     while ok == False:
         res = input("S/N: ")
@@ -339,8 +451,21 @@ def editnombrem(num):
             petKind.append(kind)
             print("")
             print("   ---Modificado corréctamente---   ")
-        elif res.upper() == "N":
             print("")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+            ok = True
+        elif res.upper() == "N":
             ook = False
 
             while ook == False:
@@ -356,13 +481,12 @@ def editnombrem(num):
             ok = True
 
 
-
 def editraza(num):
     print("")
     print("")
     kind = input("Introduzca la nueva raza de la mascota: ")
     print("")
-    print("Estás seguro de que quieres cambiar la raza de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + "del cliente:" + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " a esta: " + kind)
+    print("Estás seguro de que quieres cambiar la raza de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + " del cliente: " + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " a esta: " + kind)
     ok = False
     while ok == False:
         res = input("S/N: ")
@@ -381,6 +505,22 @@ def editraza(num):
             petKind.append(kind)
             print("")
             print("   ---Modificado corréctamente---   ")
+            print("")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+            ok = True
+        elif res.upper() == "N":
+            print("")
         elif res.upper() == "N":
             print("")
             ook = False
@@ -403,7 +543,7 @@ def editsexo(num):
     print("")
     gen = input("Introduzca el nuevo sexo de la mascota: ")
     print("")
-    print("Estás seguro de que quieres cambiar el género de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + "del cliente:" + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " a este: " + gen)
+    print("Estás seguro de que quieres cambiar el género de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + " del cliente: " + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " a este: " + gen)
     ok = False
     while ok == False:
         res = input("S/N: ")
@@ -422,6 +562,23 @@ def editsexo(num):
             petKind.append(kind)
             print("")
             print("   ---Modificado corréctamente---   ")
+            print("")
+
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de mascotas (M)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    mascotas()
+                    ook = True
+            ok = True
+        elif res.upper() == "N":
+            print("")
         elif res.upper() == "N":
             print("")
             ook = False
@@ -510,6 +667,9 @@ def mascotas():
             ok = True
         elif num == "4":
             buscamasc()
+            ok = True
+        elif num == "5":
+            editmasc()
             ok = True
         elif num == "9":
             main()
