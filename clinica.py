@@ -164,9 +164,6 @@ def editaclien(num):
             edinombrec(aux)
             ok = True
         elif num == "2":
-            editapec(aux)
-            ok = True
-        elif num == "3":
             edittelc(aux)
             ok = True
 
@@ -184,15 +181,18 @@ def edinombrec(num):
         if res.upper() == "S":
             ID = clientID[num]
             Tel = clientPhone[num]
+            pet = clientPet[num]
             del (clientName[num])
             del (clientSurname[num])
             del (clientID[num])
             del (clientPhone[num])
+            del (clientPet[num])
 
             clientName.append(nom)
             clientSurname.append(ap)
             clientID.append(ID)
             clientPhone.append(Tel)
+            clientPet.append(pet)
             print("")
             print("   ---Modificado corréctamente---   ")
         elif res.upper() == "N":
@@ -212,12 +212,48 @@ def edinombrec(num):
             ok = True
 
 
-def editapec(num):
-    return True
-
-
 def edittelc(num):
-    return True
+    print("")
+    print("")
+    tel = input("Introduzca el nuevo teléfono del cliente: ")
+    print("")
+    print("Estás seguro de que quieres cambiar el teléfono del cliente: "+ averiguarNom(clientID[num]) +" - " + clientID[num] + "de este: " + clientPhone[num] +" a este: " + tel)
+    ok = False
+    while ok == False:
+        res = input("S/N: ")
+        if res.upper() == "S":
+            nom = clientName[num]
+            sur = clientSurname[num]
+            ID = clientID[num]
+            pet = clientPet[num]
+            del (clientName[num])
+            del (clientSurname[num])
+            del (clientID[num])
+            del (clientPhone[num])
+            del (clientPet[num])
+
+            clientName.append(nom)
+            clientSurname.append(sur)
+            clientID.append(ID)
+            clientPhone.append(tel)
+            clientPet.append(pet)
+            print("")
+            print("   ---Modificado corréctamente---   ")
+        elif res.upper() == "N":
+            print("")
+            ook = False
+
+            while ook == False:
+                print("---¿Quieres volver al menú de edición (E) o al de clientes (C)?---")
+                print("")
+                resp = input("Introduzca E o M: ")
+                if resp.upper() == "E":
+                    editclien()
+                    ook = True
+                elif resp.upper() == "M":
+                    clientes()
+                    ook = True
+            ok = True
 
 
 def editmasc():
