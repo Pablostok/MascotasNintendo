@@ -350,39 +350,32 @@ def editamasc(num):
             ok = True
 
 
-def editduenio(num):
+def editduenio(numMascota):
     print("")
     print("")
     ok = False
     while ok == False:
         dni = input("Introduzca el DNI del nuevo dueño de la mascota: ")
-        ook = utilities.checkID(dni)
-        if ook == True:
+        dniValido = utilities.checkID(dni)
+        if dniValido == True and dni in clientID:
             ok = True
     print("")
-    print("Estás seguro de que quieres cambiar el dueño de la mascota: "+ petName[num] + "(" + petGenre[num] + ")" +" - " + petKind[num] + " del cliente: " + averiguarNom(petOwner[num]) + " - " + petOwner[num] + " al cliente: ")
-    nuum = devnum(dni)
-    verclien(nuum)
-    aux = devnum(num)
+    print("Estás seguro de que quieres cambiar el dueño de la mascota: " + petName[numMascota] + "(" + petGenre[numMascota] + ")" + " - " + petKind[numMascota] + " del cliente: " + averiguarNom(petOwner[numMascota]) + " - " + petOwner[numMascota] + " al cliente: ")
+    posNuevoDNI = devnum(dni)
+    verclien(posNuevoDNI)
+    posViejoDNI = devnum(petOwner[numMascota])
     ok = False
     while ok == False:
         res = input("S/N: ")
         if res.upper() == "S":
-            nom = petName[num]
-            ID = clientID[nuum]
-            gen = petGenre[num]
-            kind = petKind[num]
-            del (petName[num])
-            del (petOwner[num])
-            del (petGenre[num])
-            del (petKind[num])
-            clientPet[aux] = clientPet[aux] - 1
-            clientPet[nuum] = clientPet[nuum] + 1
-
-            petName.append(nom)
-            petOwner.append(ID)
-            petGenre.append(gen)
-            petKind.append(kind)
+            nom = petName[numMascota]
+            gen = petGenre[numMascota]
+            kind = petKind[numMascota]
+            mostrarclientes()
+            borrarMascotasLocalizadas(posViejoDNI)
+            mostrarclientes()
+            aniadirMascotasAlArray(nom, kind, gen, dni)
+            mostrarclientes()
             print("")
             print("   ---Modificado corréctamente---   ")
             print("")
@@ -399,8 +392,6 @@ def editduenio(num):
                     mascotas()
                     ook = True
             ok = True
-        elif res.upper() == "N":
-            print("")
         elif res.upper() == "N":
             print("")
             ook = False
@@ -1036,6 +1027,69 @@ def altamasc():
             ook = True
 
 
+def aniadirMascotasAlArray(nom, kind, genre, dni):
+
+    # posición del dni del cliente
+    leido = len(clientID)
+    ok = False
+    pos = 0
+    i = 0
+    while i < leido and ok == False:
+        if dni.upper() == clientID[i].upper():
+            pos = i
+            ok = True
+        i = i + 1
+
+    # numero de mascotas anteriores a mí
+    cont = 0
+    for i in range(0, pos):
+        cont = cont + clientPet[i]
+
+    # númmero de mascotas antes de mí contando las mías
+    pos = cont + clientPet[pos]
+
+    # mover todas las mascotas posteriores a mí una posición más adelante
+    numero = devnum(dni)
+    clientPet[numero] = clientPet[numero] + 1
+    petName.append(nom)
+    petOwner.append(dni)
+    petKind.append(kind)
+    petGenre.append(genre)
+
+    tamani = len(petName)
+
+    for i in range(tamani - 1, pos, -1):
+        aux = petName[i - 1]
+        petName[i - 1] = petName[i]
+        petName[i] = aux
+
+        aux = petOwner[i - 1]
+        petOwner[i - 1] = petOwner[i]
+        petOwner[i] = aux
+
+        aux = petKind[i - 1]
+        petKind[i - 1] = petKind[i]
+        petKind[i] = aux
+
+        aux = petGenre[i - 1]
+        petGenre[i - 1] = petGenre[i]
+        petGenre[i] = aux
+
+    savemasc()
+
+
+def borrarMascotasLocalizadas(num):
+
+    posDniCliente = devnum(petOwner[num])
+    del (petName[num])
+    del (petOwner[num])
+    del (petKind[num])
+    del (petGenre[num])
+    clientPet[posDniCliente] = clientPet[posDniCliente] - 1
+    print("")
+    savemasc()
+
+
 def altaclien():
     print_menus.altaclien()
     print("")
@@ -1083,7 +1137,7 @@ def altaclien():
             ook = True
         elif resp.upper() == "P":
             main()
-            ook = True
+            ook = T
 
 
 def bajaclien():
