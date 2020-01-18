@@ -364,7 +364,6 @@ def editduenio(numMascota):
     posNuevoDNI = devnum(dni)
     verclien(posNuevoDNI)
     posViejoDNI = devnum(petOwner[numMascota])
-    #Hasta aqui OK
     ok = False
     while ok == False:
         res = input("S/N: ")
