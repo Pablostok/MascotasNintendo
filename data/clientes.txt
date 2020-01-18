@@ -2,12 +2,12 @@ Manuel
 Carrasco
 12121212M
 111111111
-1
+2
 Vanesa
 Martín
 27272727V
 222222222
-3
+2
 David
 Bisbal
 17171717D
@@ -17,7 +17,7 @@ Pablo
 Alborán
 15151515N
 444444444
-1
+0
 Pablo
 López
 13131313S
@@ -27,7 +27,7 @@ Amanda
 I de Castilla
 16161616E
 000000000
-0
+1
 Carmenisa
 I de Talavera
 38383838N
@@ -37,4 +37,4 @@ Pablo
 I de Francia
 37373737W
 623000000
-1
+2

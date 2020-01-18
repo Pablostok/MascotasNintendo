@@ -364,6 +364,7 @@ def editduenio(numMascota):
     posNuevoDNI = devnum(dni)
     verclien(posNuevoDNI)
     posViejoDNI = devnum(petOwner[numMascota])
+    #Hasta aqui OK
     ok = False
     while ok == False:
         res = input("S/N: ")
@@ -372,7 +373,7 @@ def editduenio(numMascota):
             gen = petGenre[numMascota]
             kind = petKind[numMascota]
             mostrarclientes()
-            borrarMascotasLocalizadas(posViejoDNI)
+            borrarMascotasLocalizadas(numMascota)
             mostrarclientes()
             aniadirMascotasAlArray(nom, kind, gen, dni)
             mostrarclientes()
@@ -1049,8 +1050,8 @@ def aniadirMascotasAlArray(nom, kind, genre, dni):
     pos = cont + clientPet[pos]
 
     # mover todas las mascotas posteriores a mí una posición más adelante
-    numero = devnum(dni)
-    clientPet[numero] = clientPet[numero] + 1
+    posDNICliente = devnum(dni)
+    clientPet[posDNICliente] = clientPet[posDNICliente] + 1
     petName.append(nom)
     petOwner.append(dni)
     petKind.append(kind)
@@ -1076,18 +1077,20 @@ def aniadirMascotasAlArray(nom, kind, genre, dni):
         petGenre[i] = aux
 
     savemasc()
+    saveclien()
 
+def borrarMascotasLocalizadas(numMascotaEnArray):
 
-def borrarMascotasLocalizadas(num):
-
-    posDniCliente = devnum(petOwner[num])
-    del (petName[num])
-    del (petOwner[num])
-    del (petKind[num])
-    del (petGenre[num])
+    posDniCliente = devnum(petOwner[numMascotaEnArray])
+    del (petName[numMascotaEnArray])
+    del (petOwner[numMascotaEnArray])
+    del (petKind[numMascotaEnArray])
+    del (petGenre[numMascotaEnArray])
     clientPet[posDniCliente] = clientPet[posDniCliente] - 1
+
     print("")
     savemasc()
+    saveclien()
 
 
 def altaclien():
