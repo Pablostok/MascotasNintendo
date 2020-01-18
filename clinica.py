@@ -372,11 +372,11 @@ def editduenio(numMascota):
             nom = petName[numMascota]
             gen = petGenre[numMascota]
             kind = petKind[numMascota]
-            mostrarclientes()
+
             borrarMascotasLocalizadas(numMascota)
-            mostrarclientes()
+
             aniadirMascotasAlArray(nom, kind, gen, dni)
-            mostrarclientes()
+
             print("")
             print("   ---Modificado corréctamente---   ")
             print("")
